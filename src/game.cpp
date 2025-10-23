@@ -33,8 +33,9 @@ void Game::Init() {
     maze = new Maze();
     maze->Init();
     
-    Vector2 pacmanStart = {MAZE_WIDTH * TILE_SIZE / 2.0f, 
-                           (MAZE_HEIGHT - 5) * TILE_SIZE};
+    // Posição inicial do Pacman (linha 23, coluna 14 - meio do corredor inferior)
+    Vector2 pacmanStart = {14.0f * TILE_SIZE + TILE_SIZE/2, 
+                           23.0f * TILE_SIZE + TILE_SIZE/2};
     pacman = new Pacman();
     pacman->Init(pacmanStart);
     
@@ -152,9 +153,9 @@ void Game::Reset() {
     // Resetar labirinto
     maze->Init();
     
-    // Resetar Pacman
-    Vector2 pacmanStart = {MAZE_WIDTH * TILE_SIZE / 2.0f, 
-                           (MAZE_HEIGHT - 5) * TILE_SIZE};
+    // Resetar Pacman (mesma posição inicial)
+    Vector2 pacmanStart = {14.0f * TILE_SIZE + TILE_SIZE/2, 
+                           23.0f * TILE_SIZE + TILE_SIZE/2};
     pacman->Init(pacmanStart);
     
     // Resetar fantasmas

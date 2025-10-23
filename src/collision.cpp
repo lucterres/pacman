@@ -21,8 +21,8 @@ void CollisionSystem::CheckPacmanGhostCollisions(Pacman* pacman, Ghost* ghosts[4
                 pacman->LoseLife();
                 
                 // Reset posições
-                Vector2 startPos = {MAZE_WIDTH * TILE_SIZE / 2, 
-                                   (MAZE_HEIGHT - 5) * TILE_SIZE};
+                Vector2 startPos = {14.0f * TILE_SIZE + TILE_SIZE/2, 
+                                   23.0f * TILE_SIZE + TILE_SIZE/2};
                 pacman->Reset(startPos);
                 
                 for (int j = 0; j < 4; j++) {

@@ -88,13 +88,13 @@ void Pacman::HandleInput() {
     if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) {
         nextDirection = {1, 0};
     }
-    else if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A)) {
+    if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A)) {
         nextDirection = {-1, 0};
     }
-    else if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)) {
+    if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)) {
         nextDirection = {0, 1};
     }
-    else if (IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)) {
+    if (IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)) {
         nextDirection = {0, -1};
     }
 }
@@ -123,18 +123,19 @@ Rectangle Pacman::GetHitbox() const {
 }
 
 bool Pacman::CanMove(Vector2 newPos, Maze* maze) {
-    // Verificar os 4 cantos do Pacman
-    float offset = TILE_SIZE * 0.4f;
+    // Verificar o centro e os 4 cantos do Pacman
+    float offset = TILE_SIZE * 0.3f;
     
-    Vector2 corners[4] = {
+    Vector2 points[5] = {
+        {newPos.x, newPos.y},  // Centro
         {newPos.x - offset, newPos.y - offset},
         {newPos.x + offset, newPos.y - offset},
         {newPos.x - offset, newPos.y + offset},
         {newPos.x + offset, newPos.y + offset}
     };
     
-    for (int i = 0; i < 4; i++) {
-        if (maze->IsWall(corners[i])) {
+    for (int i = 0; i < 5; i++) {
+        if (maze->IsWall(points[i])) {
             return false;
         }
     }
